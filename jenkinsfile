@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('SCM') {
+            steps {
+                git 'https://github.com/robuzzmusk/angular-app.git'
+            }
+        }
+        stage('docker build') {
+            steps {
+                sh 'sudo docker build -t ravitejakandagatla/angular-app:$BUILD_NUMBER . '
+            }
+        }
+        
+    }
+}
